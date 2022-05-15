@@ -1,0 +1,289 @@
+<html>
+<head>
+    <style>
+        @page {
+            size: a4 portrait;
+            padding: 1em 0;
+            margin: 2.5em 1.5em;
+
+            @top-left {
+                content: 'CV - Bjørn-Tore Mediaa';
+
+                font-size: 9pt;
+                font-family: Calibri, sans-serif;
+                border-bottom: 1px solid #000000;
+                padding-left: 5pt;
+                margin-bottom: 1em;
+                box-sizing: border-box;
+                max-height: 2.5em;
+            }
+
+            @top-center {
+                content: 'A print friendly CV with minimal colors and elements';
+
+                font-size: 9pt;
+                font-style: italic;
+                font-family: Calibri, sans-serif;
+                border-bottom: 1px solid #000000;
+                margin-bottom: 1em;
+                box-sizing: border-box;
+                max-height: 2.5em;
+            }
+
+            @top-right {
+                content: 'Page ' counter(page) ' of ' counter(pages);
+
+                font-size: 9pt;
+                font-family: Calibri, sans-serif;
+                border-bottom: 1px solid #000000;
+                padding-right: 5pt;
+                margin-bottom: 1em;
+                box-sizing: border-box;
+                max-height: 2.5em;
+            }
+
+            @bottom-left {
+                content: 'This CV was generated using Kotlin and OpenHTMLToPDF.';
+
+                font-size: 9pt;
+                font-style: italic;
+                font-family: Calibri, sans-serif;
+                border-top: 1px solid #000000;
+                margin-top: 1em;
+                box-sizing: border-box;
+                max-height: 2.5em;
+            }
+
+            @bottom-right {
+                content: 'Page ' counter(page) ' of ' counter(pages);
+
+                font-size: 9pt;
+                font-family: Calibri, sans-serif;
+                border-top: 1px solid #000000;
+                padding-right: 5pt;
+                margin-top: 1em;
+                box-sizing: border-box;
+                max-height: 2.5em;
+            }
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: Calibri, sans-serif;
+        }
+
+        html, body {
+            font-size: 14px;
+            margin: 0;
+            line-height: 1.25em;
+            width: 100%;
+            height: 100%;
+        }
+
+        body > * {
+            display: inline-block;
+            vertical-align: top;
+        }
+
+        small {
+            font-size: .75em;
+        }
+
+        p {
+            letter-spacing: 0.03em;
+            line-height: 1.45em;
+            margin: .75em 0;
+        }
+
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            line-height: 1.3em;
+        }
+
+        .centered-content {
+            text-align: center;
+        }
+
+        .avatar {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 250px;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+        }
+
+        .profile {
+            width: 265px;
+            margin-right: 10px;
+            border-right: 1px solid #000000;
+            padding: 0;
+            margin-left: 0;
+        }
+
+        .profile table * {
+            white-space: nowrap;
+        }
+
+        .content {
+            width: 466px;
+            float: right;
+        }
+
+        .details .skills,
+        .technologies {
+            margin-top: 10px;
+        }
+
+        .details hr.limited {
+            max-width: 96.5%;
+        }
+
+        .accomplishments,
+        .experience-item ul,
+        .details .skills {
+            margin: 0 0 0 1em;
+            padding: 0;
+        }
+
+        .accomplishments li,
+        .experience-item ul li,
+        .details .skills li {
+            padding: .15em;
+        }
+
+        /*.details .skills p,
+        .technologies p {
+            display: inline-block;
+            background: #848484;
+            color: #ffffff;
+            border-radius: 5px;
+            padding: 3px 6px;
+            margin: 0 0 5px 0;
+        }*/
+
+        .details .skills p:not(:last-child),
+        .technologies p:not(:last-child) {
+            margin-right: 5px;
+        }
+
+        .experience-item {
+            background: #eeeeee;
+            margin-bottom: 1em;
+            padding: 6px 10px;
+            border-radius: 3px;
+            position: relative;
+        }
+
+        .experience-item .title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .experience-item .where {
+            font-size: 13px;
+            margin-top: .5em;
+        }
+
+        .experience-item .time {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="profile">
+    <div class="centered-content">
+        <div class="avatar">
+            <img src='{{SUBJECT_IMAGE_URL}}'/>
+        </div>
+        <div class="details">
+            <h2>{{SUBJECT_FULL_NAME}}</h2>
+            <h4><i>{{SUBJECT_TITLE}}</i></h4>
+        </div>
+    </div>
+
+    <div class="details">
+        <hr class="limited"/>
+
+        <table>
+            <tr>
+                <td><strong>Age:</strong></td>
+                <td>{{SUBJECT_AGE}}</td>
+            </tr>
+            <tr>
+                <td><strong>Location:</strong></td>
+                <td>{{SUBJECT_LOCATION}}</td>
+            </tr>
+            <tr>
+                <td><strong>Email:</strong></td>
+                <td>{{SUBJECT_EMAIL}}</td>
+            </tr>
+            <tr>
+                <td><strong>Phone:</strong></td>
+                <td>{{SUBJECT_MOBILE}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr/>
+                    <h3><strong>Online Profiles</strong></h3>
+                </td>
+            </tr>
+            <tr>
+                <td><strong>Website:</strong></td>
+                <td>{{SUBJECT_WEBSITE}}</td>
+            </tr>
+            <tr>
+                <td><strong>LinkedIn:</strong></td>
+                <td>{{SUBJECT_LINKEDIN}}</td>
+            </tr>
+            <tr>
+                <td><strong>GitHub:</strong></td>
+                <td>{{SUBJECT_GITHUB}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr/>
+                    <h3><strong>Skills</strong></h3>
+                    <ul class="skills">
+                        {{SKILLS}}
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="content">
+    {{QUICK_INTRO}}
+
+    <h2>Work Experience</h2>
+    <hr/>
+    <div class="experiences">
+        {{WORK_EXPERIENCE}}
+    </div>
+
+    <br/>
+
+    <h2>Education</h2>
+    <hr/>
+    <div class="experiences">
+        {{EDUCATIONAL_EXPERIENCE}}
+    </div>
+
+    <h2>Accomplishments</h2>
+    <hr/>
+    <ul class="accomplishments">
+        {{ACCOMPLISHMENTS}}
+    </ul>
+</div>
+</body>
+</html>
